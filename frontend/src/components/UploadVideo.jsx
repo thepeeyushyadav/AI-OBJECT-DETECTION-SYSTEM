@@ -26,9 +26,9 @@ export default function UploadVideo() {
     formData.append('file', selectedFile);
 
     try {
-      // Assuming backend is running on localhost:8000
-      const response = await axios.post('http://localhost:8000/api/detect/video', formData, {
-        responseType: 'blob' // Important to get video data
+      // Using deployed Render backend
+      const response = await axios.post('https://ai-object-detection-systems.onrender.com/api/detect/video', formData, {
+        responseType: 'blob' // Important for video file download
       });
       
       const blob = new Blob([response.data], { type: 'video/webm' });
